@@ -54,6 +54,15 @@ public class MatOperations {
         return a;
     }
 
+    public int[][] transposeOf(int[][] a) {
+        int[][] b = new int[a[0].length][a.length];
+
+        for (int i = 0; i < b.length; i++)
+            for (int j = 0; j < b[0].length; j++)
+                b[i][j] = a[j][i];
+        return b;
+    }
+
     public boolean equals(int[][] a, int[][] b) {
         if (!(a.length == b.length) || !(a[0].length == b[0].length))
             return false;
