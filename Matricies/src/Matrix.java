@@ -86,6 +86,9 @@ public class Matrix {
                 mat[i][i] = 1;
             }
         }
+        else {
+            System.err.println("The identity matrix must be N x N!");
+        }
     }
 
     public void scalar(int number) {
@@ -94,6 +97,9 @@ public class Matrix {
             {
                 mat[i][i] = number;
             }
+        }
+        else {
+            System.err.println("The scalar matrix must be N x N!");
         }
     }
 
