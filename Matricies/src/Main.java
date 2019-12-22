@@ -14,17 +14,31 @@ public class Main {
         }
         else
         {
-            Matrix myMatrix = new Matrix(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
+            MatOperations operation = new MatOperations();
 
-            genRandMatrix(myMatrix);
-            myMatrix.clear();
-            genUpperTriangular(myMatrix);
-            myMatrix.clear();
-            genLowerTriangular(myMatrix);
-            myMatrix.clear();
-            getIdentity(myMatrix);
-            myMatrix.clear();
-            getScalar(myMatrix, 10);
+            Matrix a = new Matrix(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
+            Matrix b = new Matrix(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
+
+            a.generateRand(5);
+            b.generateRand(5);
+            int[][] c = operation.scalarMultiplication(a.getMat(), 2);
+
+            System.out.println(a.toString());
+            System.out.println(b.toString());
+            printResult(c);
+        }
+    }
+
+    private static void printResult(int[][] c)
+    {
+        System.out.println("The result of matrix operation is: ");
+        for (int i = 0; i < c.length; i++)
+        {
+            for (int j = 0; j < c[i].length; j++)
+            {
+                System.out.print(c[i][j] + " ");
+            }
+            System.out.println();
         }
     }
 

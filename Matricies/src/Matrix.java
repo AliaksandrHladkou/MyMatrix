@@ -24,16 +24,6 @@ public class Matrix {
         this.N = matrix[0].length;
     }
 
-    public void clear() {
-        for (int i = 0; i < mat.length; i++)
-        {
-            for (int j = 0; j < mat[i].length; j++)
-            {
-                mat[i][j] = 0;
-            }
-        }
-    }
-
     public void generateRand(int range) {
         Random rand = new Random();
         for (int i = 0; i < mat.length; i++)
