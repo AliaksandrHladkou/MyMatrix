@@ -4,6 +4,7 @@ import java.util.Random;
  * Author: Aliaksandr Hladkou
  *
  * Generating different types of matrices
+ *
  * */
 
 public class Matrix {
@@ -76,6 +77,36 @@ public class Matrix {
         else {
             System.err.println("The lower triangular matrix must be N x N!");
         }
+    }
+
+    public void identity() {
+        if (this.M == this.N) {
+            for (int i = 0; i < mat.length; i++)
+            {
+                mat[i][i] = 1;
+            }
+        }
+    }
+
+    public void scalar(int number) {
+        if (this.M == this.N) {
+            for (int i = 0; i < mat.length; i++)
+            {
+                mat[i][i] = number;
+            }
+        }
+    }
+
+    public int[][] getMat() {
+        return mat;
+    }
+
+    public int getM() {
+        return M;
+    }
+
+    public int getN() {
+        return N;
     }
 
     private String print() {
