@@ -5,6 +5,9 @@
 *
 * */
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args)
     {
@@ -15,17 +18,24 @@ public class Main {
         else
         {
             MatOperations operation = new MatOperations();
+            Matrix[] matrices = new Matrix[5];
 
-            Matrix a = new Matrix(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
-            Matrix b = new Matrix(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
+            for (int i = 0; i < matrices.length; i++)
+                matrices[i] = new Matrix(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
 
-            a.generateRand(5);
-            b.generateRand(5);
-            int[][] c = operation.scalarMultiplication(a.getMat(), 2);
+            genAndPrintScalar(matrices[0], 5);
+            genAndPrintLowerTriangular(matrices[1]);
+            genAndPrintUpperTriangular(matrices[2]);
+            genAndPrintRandMatrix(matrices[3]);
+            genAndPrintIdentity(matrices[4]);
 
-            System.out.println(a.toString());
-            System.out.println(b.toString());
-            printResult(c);
+            int[][] subResult = operation.subtract(matrices[3].getMat(), matrices[0].getMat());
+            int[][] addResult = operation.add(matrices[1].getMat(), matrices[2].getMat());
+            int[][] multResult = operation.multiply(matrices[4].getMat(), matrices[0].getMat());
+
+            printResult(subResult);
+            printResult(addResult);
+            printResult(multResult);
         }
     }
 
@@ -42,31 +52,31 @@ public class Main {
         }
     }
 
-    private static void getScalar(Matrix matrix, int number) {
+    private static void genAndPrintScalar(Matrix matrix, int number) {
         System.out.println(String.format("Generating scalar %0$s x %1$s matrix..", matrix.getM(), matrix.getN()));
         matrix.scalar(number);
         System.out.println(matrix.toString());
     }
 
-    private static void getIdentity(Matrix matrix) {
+    private static void genAndPrintIdentity(Matrix matrix) {
         System.out.println(String.format("Generating identity %0$s x %1$s matrix..", matrix.getM(), matrix.getN()));
         matrix.identity();
         System.out.println(matrix.toString());
     }
 
-    private static void genRandMatrix(Matrix myMatrix) {
-        System.out.println(String.format("Generating %0$s x %1$s matrix..", myMatrix.getM(), myMatrix.getN()));
-        myMatrix.generateRand(10);
-        System.out.println(myMatrix.toString());
+    private static void genAndPrintRandMatrix(Matrix matrix) {
+        System.out.println(String.format("Generating %0$s x %1$s matrix..", matrix.getM(), matrix.getN()));
+        matrix.generateRand(10);
+        System.out.println(matrix.toString());
     }
 
-    private static void genUpperTriangular(Matrix myMatrix) {
-        System.out.println(String.format("Generating upper triangular %0$s x %1$s matrix..", myMatrix.getM(), myMatrix.getN()));
-        myMatrix.upperTriangular(10);
-        System.out.println(myMatrix.toString());
+    private static void genAndPrintUpperTriangular(Matrix matrix) {
+        System.out.println(String.format("Generating upper triangular %0$s x %1$s matrix..", matrix.getM(), matrix.getN()));
+        matrix.upperTriangular(10);
+        System.out.println(matrix.toString());
     }
 
-    private static void genLowerTriangular(Matrix matrix) {
+    private static void genAndPrintLowerTriangular(Matrix matrix) {
         System.out.println(String.format("Generating lower triangular %0$s x %1$s matrix..", matrix.getM(), matrix.getN()));
         matrix.lowerTriangular(10);
         System.out.println(matrix.toString());
