@@ -5,9 +5,6 @@
 *
 * */
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
     public static void main(String[] args)
     {
@@ -31,7 +28,7 @@ public class Main {
 
             int[][] subResult = operation.subtract(matrices[3].getMat(), matrices[0].getMat());
             int[][] addResult = operation.add(matrices[1].getMat(), matrices[2].getMat());
-            int[][] multResult = operation.multiply(matrices[4].getMat(), matrices[0].getMat());
+            int[][] multResult = operation.multiply(matrices[2].getMat(), matrices[0].getMat());
 
             printResult(subResult);
             printResult(addResult);
